@@ -13,6 +13,7 @@
 		251EE14D2862FD41008CDC17 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 251EE14C2862FD41008CDC17 /* Preview Assets.xcassets */; };
 		251EE15428630936008CDC17 /* SafariView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251EE15328630936008CDC17 /* SafariView.swift */; };
 		251EE16D286D80DD008CDC17 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251EE16C286D80DD008CDC17 /* WebView.swift */; };
+		251EE172286D97A4008CDC17 /* BetterSafariView in Frameworks */ = {isa = PBXBuildFile; productRef = 251EE171286D97A4008CDC17 /* BetterSafariView */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				251EE172286D97A4008CDC17 /* BetterSafariView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -89,6 +91,9 @@
 			dependencies = (
 			);
 			name = WebAuthnSample;
+			packageProductDependencies = (
+				251EE171286D97A4008CDC17 /* BetterSafariView */,
+			);
 			productName = WebAuthnSample;
 			productReference = 251EE1422862FD3F008CDC17 /* WebAuthnSample.app */;
 			productType = "com.apple.product-type.application";
@@ -117,6 +122,9 @@
 				Base,
 			);
 			mainGroup = 251EE1392862FD3F008CDC17;
+			packageReferences = (
+				251EE170286D97A4008CDC17 /* XCRemoteSwiftPackageReference "BetterSafariView" */,
+			);
 			productRefGroup = 251EE1432862FD3F008CDC17 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -349,6 +357,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		251EE170286D97A4008CDC17 /* XCRemoteSwiftPackageReference "BetterSafariView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/stleamist/BetterSafariView";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		251EE171286D97A4008CDC17 /* BetterSafariView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 251EE170286D97A4008CDC17 /* XCRemoteSwiftPackageReference "BetterSafariView" */;
+			productName = BetterSafariView;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 251EE13A2862FD3F008CDC17 /* Project object */;
 }

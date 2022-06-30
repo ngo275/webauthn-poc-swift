@@ -6,22 +6,60 @@
 //
 
 import SwiftUI
-
+import BetterSafariView
 
 struct ContentView: View {
-    @State var showSafari = false
+   
+    @State private var presentingSafariView = false
+    @State private var presentingWKWebView = false
+    @State private var startingWebAuthenticationSession = false
     
     var body: some View {
-        Text("Hello, world!")
-            .padding()
-            .sheet(isPresented: $showSafari) {
-                SafariView(url: Consts.url)
-//                WebView(url: Consts.url)
+        
+        VStack(spacing: 16) {
+            Button(action: {
+                self.presentingSafariView.toggle()
+            }) {
+                Text("Start SafariView")
             }
-            .onAppear {
-                showSafari.toggle()
+            .safariView(isPresented: $presentingSafariView) {
+                SafariView(
+                    url: Consts.url,
+                    configuration: SafariView.Configuration(
+                        entersReaderIfAvailable: false,
+                        barCollapsingEnabled: true
+                    )
+                )
+                .preferredBarAccentColor(.clear)
+                .preferredControlAccentColor(.accentColor)
+                .dismissButtonStyle(.done)
             }
-
+            
+            Button(action: {
+                presentingWKWebView.toggle()
+            }) {
+                Text("Start WKWebView")
+            }
+            
+            Button(action: {
+                self.startingWebAuthenticationSession.toggle()
+            }) {
+                Text("Start WebAuthenticationSession")
+            }
+            .webAuthenticationSession(isPresented: $startingWebAuthenticationSession) {
+                WebAuthenticationSession(
+                    url: Consts.url,
+                    callbackURLScheme: "github"
+                ) { callbackURL, error in
+                    print(callbackURL, error)
+                }
+                .prefersEphemeralWebBrowserSession(false)
+            }
+            
+        }
+        .sheet(isPresented: $presentingWKWebView) {
+            WebView(url: Consts.url)
+        }
     }
 
 }
